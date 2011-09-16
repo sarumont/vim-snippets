@@ -11,24 +11,13 @@ def nl(snip):
 endglobal
 
 
-snippet ca "catch" b
-catch (${1:Exception} ${2:e})`!p nl(snip)`{
-	$0
-}
-endsnippet
-
-snippet de "default" b
-default:
-	$0
-endsnippet
-
-snippet elif "else if" b
+snippet elif "else if" w
 else if ($1)`!p nl(snip)`{
 	$0
 }
 endsnippet
 
-snippet /el(se)?/ "else" b
+snippet /el(se)?/ "else" w
 else`!p nl(snip)`{
 	$0
 }
