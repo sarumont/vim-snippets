@@ -62,18 +62,22 @@ endsnippet
 
 snippet acc "Generate accessor and setter" b
 /**
- * Sets $4
+ * Sets $3
  *
- * @param $2 is the new value for $4
+ * @param $2 is the new value for $3
  */
-public void set${4:Name}( ${1:Type} ${2:name} ) { ${3:_$2} = $2; };
+public void set${2/.*/\u$0/}( ${1:Type} ${2:name} ) {
+	${3:_$2} = $2;
+}
 
 /**
- * Returns $4
+ * Returns $3
  *
- * @return $4
+ * @return $3
  */
-public $1 get$4() { return $3; };
+public $1 get${2/.*/\u$0/}() {
+	return $3;
+}
 $0
 endsnippet
 
