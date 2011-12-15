@@ -94,4 +94,14 @@ ${1:public }${2:abstract }${3:void} ${4:methodName}(${5});
 ${9}
 endsnippet
 
+snippet ctor "Constructor" !b
+/**
+ * ${6:Constructor}${7}
+ */
+${1:public }${3:`!p snip.rv = snip.basename or "untitled"`}(${4})`!p nl(snip)`{
+	${8}
+}
+endsnippet
+
+
 # vim:ft=snippets:
