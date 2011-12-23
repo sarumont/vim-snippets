@@ -103,5 +103,12 @@ ${1:public }${3:`!p snip.rv = snip.basename or "untitled"`}(${4})`!p nl(snip)`{
 }
 endsnippet
 
+snippet iface "Interface" b
+public interface ${1:`!p
+snip.rv = snip.basename or "untitled"`} ${2:extends ${3:Parent} }{
+	$0
+}
+endsnippet
+
 
 # vim:ft=snippets:
