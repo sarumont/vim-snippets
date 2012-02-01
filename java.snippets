@@ -73,6 +73,18 @@ public $1 get${2/.*/\u$0/}() {
 $0
 endsnippet
 
+snippet accessor "Generate accessor" b
+/**
+ * Returns $2
+ *
+ * @return $2
+ */
+public ${1:String} get${2/.*/\u$0/}() {
+	return _${2:name};
+}
+$0
+endsnippet
+
 snippet m "method" !b
 /**
  * ${7:Method Description}
