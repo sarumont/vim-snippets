@@ -126,4 +126,10 @@ snippet ise "Illegal State Exception" !b
 throw new IllegalStateException(${1});${2}
 endsnippet
 
+snippet npe "Null check" !b
+if ( null == ${1} ) {
+	throw new NullPointerException( "$1 cannot be null" );
+}${2}
+endsnippet
+
 # vim:ft=snippets:
