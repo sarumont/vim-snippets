@@ -52,7 +52,7 @@ snippet mem "Generate a member variable" b
 ${1:protected }${2:final }${3:String} _${4:name};$0
 endsnippet
 
-snippet acc "Generate accessor and setter" b
+snippet getset "Generate accessor and setter" b
 /**
  * Sets $3
  *
@@ -73,7 +73,7 @@ public $1 get${2/.*/\u$0/}() {
 $0
 endsnippet
 
-snippet accessor "Generate accessor" b
+snippet acc "Generate accessor" b
 /**
  * Returns $2
  *
@@ -102,16 +102,26 @@ snippet am "abstract method" !b
  * ${6}
  * @return ${7}
  */
-${1:public }${2:abstract }${3:void} ${4:methodName}(${5});
+${1:public }abstract ${3:void} ${4:methodName}(${5});
+${9}
+endsnippet
+
+snippet ifm "interface method" !b
+/**
+ * ${8:Method Description}
+ * ${6}
+ * @return ${7}
+ */
+${1:public }${3:void} ${4:methodName}(${5});
 ${9}
 endsnippet
 
 snippet ctor "Constructor" !b
 /**
- * ${6:Constructor}${7}
+ * ${6:Constructor} ${7}
  */
 ${1:public }${3:`!p snip.rv = snip.basename or "untitled"`}(${4})`!p nl(snip)`{
-	${8}
+	$0
 }
 endsnippet
 
@@ -126,10 +136,35 @@ snippet ise "Illegal State Exception" !b
 throw new IllegalStateException(${1});${2}
 endsnippet
 
+snippet iae "Illegal Argument Exception" !b
+throw new IllegalArgumentException(${1});${2}
+endsnippet
+
 snippet npe "Null check" !b
 if ( null == ${1} ) {
 	throw new NullPointerException( "$1 cannot be null" );
 }${2}
+endsnippet
+
+snippet cl "class" !b
+package ${7};
+
+/**
+ * ${6:Description}
+ */
+public class ${1:`!p
+snip.rv = snip.basename or "untitled"`} ${2:extends ${3:Parent} }${4:implements ${5:Interface} }{
+	$0
+}
+endsnippet
+
+snippet ic "inner class" b
+/**
+ * ${7:Description}
+ */
+${1:public }class ${2:Name} ${3:extends ${4:Parent} }${5:implements ${6:Interface} }{
+	$0
+}
 endsnippet
 
 # vim:ft=snippets:
