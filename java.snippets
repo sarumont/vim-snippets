@@ -119,7 +119,12 @@ ${1:public }${3:`!p snip.rv = snip.basename or "untitled"`}(${4})`!p nl(snip)`{
 }
 endsnippet
 
-snippet iface "Interface" b
+snippet iface "Interface" !b
+package ${7};
+
+/**
+ * ${6:Description}
+ */
 public interface ${1:`!p
 snip.rv = snip.basename or "untitled"`} ${2:extends ${3:Parent} }{
 	$0
