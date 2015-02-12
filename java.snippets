@@ -8,6 +8,18 @@ def nl(snip):
         snip += ""
     else:
         snip.rv += " "
+
+def memvar_ref(snip):
+	prefix = snip.opt("g:ultisnips_java_member_variable_prefix", "")
+	if prefix == "":
+		snip.rv += "this."
+	else:
+		snip.rv += prefix
+
+def fpad(snip):
+	if snip.opt("g:ultisnips_java_functions_padded", False):
+		snip.rv += " "
+
 endglobal
 
 snippet perr "printerr"  b
@@ -66,8 +78,8 @@ snippet getset "Generate accessor and setter" b
  *
  * @param $2 is the new value for $3
  */
-public void set${2/.*/\u$0/}( ${1:Type} ${2:name} ) {
-	${3:_$2} = $2;
+public void set${2/.*/\u$0/}(`!p fpad(snip)`${1:Type} ${2:name}`!p fpad(snip)`)`!p nl(snip)`{
+	${3:`!p memvar_ref(snip)`$2} = $2;
 }
 
 /**
@@ -75,7 +87,7 @@ public void set${2/.*/\u$0/}( ${1:Type} ${2:name} ) {
  *
  * @return $3
  */
-public $1 get${2/.*/\u$0/}() {
+public $1 get${2/.*/\u$0/}()`!p nl(snip)`{
 	return $3;
 }
 $0
@@ -87,8 +99,8 @@ snippet acc "Generate accessor" b
  *
  * @return $2
  */
-public ${1:String} get${2/.*/\u$0/}() {
-	return _${2:name};
+public ${1:String} get${2/.*/\u$0/}()`!p nl(snip)`{
+	return `!p memvar_ref(snip)`${2:name};
 }
 $0
 endsnippet
