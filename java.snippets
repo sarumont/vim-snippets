@@ -45,13 +45,13 @@ endsnippet
 snippet try "try" b
 try`!p nl(snip)`{
 	$0
-} catch ( ${1:Exception} ${2:e}p )`!p nl(snip)`{
+} catch (`!p fpad(snip)`${1:Exception} ${2:e}`!p fpad(snip)`)`!p nl(snip)`{
 	$3
 }
 endsnippet
 
 snippet ca "catch" w
-catch ( ${1:Exception} ${2:e} )`!p nl(snip)`{
+catch (`!p fpad(snip)`${1:Exception} ${2:e}`!p fpad(snip)`)`!p nl(snip)`{
 	$0
 }
 endsnippet
