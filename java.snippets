@@ -22,12 +22,12 @@ def fpad(snip):
 
 endglobal
 
-snippet perr "printerr"  b
-System.err.println($1);$0
+snippet im
+import ${1};${0}
 endsnippet
 
-snippet pro "protected" !w
-protected 
+snippet perr "printerr"  b
+System.err.println($1);$0
 endsnippet
 
 snippet elif "else if" !w
@@ -56,19 +56,11 @@ catch (`!p fpad(snip)`${1:Exception} ${2:e}`!p fpad(snip)`)`!p nl(snip)`{
 }
 endsnippet
 
-snippet cos "constant string" !b
-public static final String ${1:VAR} = "$2";$0
-endsnippet
-
-snippet co "constant" !b
-public static final ${1:String} ${2:VAR} = $3;$0
-endsnippet
-
 snippet mem "Generate a member variable" b
 ${1:`!p snip.rv += snip.opt("g:ultisnips_java_member_variable_access", "private")` }`!p if snip.opt("g:ultisnips_java_members_final", "") == "yes": snip.rv += "final "`${3:String} `!p snip.rv += snip.opt("g:ultisnips_java_member_variable_prefix", "")`${4:name};$0
 endsnippet
 
-snippet fmem "Generate a final member variable" b
+snippet fm "Generate a final member variable" b
 ${1:`!p snip.rv += snip.opt("g:ultisnips_java_member_variable_access", "private")` }final ${3:String} `!p snip.rv += snip.opt("g:ultisnips_java_member_variable_prefix", "")`${4:name};$0
 endsnippet
 
@@ -101,11 +93,10 @@ snippet acc "Generate accessor" b
  */
 public ${1:String} get${2/.*/\u$0/}()`!p nl(snip)`{
 	return `!p memvar_ref(snip)`${2:name};
-}
-$0
+}$0
 endsnippet
 
-snippet m "method" !b
+snippet m "method" !bsm
 /**
  * ${7:Method Description}
  */
@@ -118,16 +109,14 @@ snippet am "abstract method" !b
 /**
  * ${8:Method Description}
  */
-${1:public }abstract ${3:void} ${4:methodName}(${5});
-${9}
+${1:public }abstract ${3:void} ${4:methodName}(${5});$0
 endsnippet
 
 snippet ifm "interface method" !b
 /**
  * ${8:Method Description}
  */
-`!p snip.opt("g:ultisnips_java_iface_access", "")`${3:void} ${4:methodName}(${5});
-${9}
+`!p snip.opt("g:ultisnips_java_iface_access", "")`${3:void} ${4:methodName}(${5});$0
 endsnippet
 
 snippet ctor "Constructor" !b
@@ -170,7 +159,8 @@ package ${7};
 
 /**
  * ${6:Description}
- */
+ *
+ * @author `!p snip.rv += snip.opt("g:author_name", "")` */
 public class ${1:`!p
 snip.rv = snip.basename or "untitled"`} ${2:extends ${3:Parent} }${4:implements ${5:Interface} }{
 	$0
