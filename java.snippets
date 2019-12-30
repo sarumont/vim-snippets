@@ -7,4 +7,12 @@ snippet /log(ger)?/ "Logger" br
 private static final Logger LOG = LoggerFactory.getLogger(`!p snip.rv = snip.basename or "untitled"`.class);
 endsnippet
 
+snippet rnn "Require Non-null" b
+Objects.requireNonNull(${1}, "$1 must be provided");
+endsnippet
+
+snippet rne "Require not empty" b
+StringUtil.requireNonEmpty(${1}, "$1 must not be null or empty");
+endsnippet
+
 # vim:ft=snippets:
